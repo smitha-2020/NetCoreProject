@@ -1,0 +1,41 @@
+# DELETE https://localhost:7210/courses/abc HTTP/1.1
+#GET https://localhost:7210/courses HTTP/1.1
+# POST https://localhost:7210/courses HTTP/1.1
+# content-type: application/json
+
+# {
+#     "Name": "ML-13",
+#     "Status": 2,
+#     "StartDate": "2023-02-02"
+# }
+
+# PUT https://localhost:7210/courses/1 HTTP/1.1
+# content-type: application/json
+
+# {
+#     "Name": "FS-13 Microsoft",
+#     "Status": 1,
+#     "StartDate": "2023-11-23"
+# }
+
+
+# DELETE https://localhost:7210/students/3 HTTP/1.1
+# GET https://localhost:7210/students HTTP/1.1
+# POST https://localhost:7210/students HTTP/1.1
+# content-type: application/json
+
+# {
+#     "FirstName":"Smitha",
+#     "LastName":"Kamath",
+#     "Email":"smitha@integrify.io"
+# }
+
+# PUT https://localhost:7210/students/1 HTTP/1.1
+# content-type: application/json
+
+
+# {
+#     "FirstName":"Smitha",
+#     "LastName":"Bhandarkar",
+#     "Email":"smitha@integrify.io"
+# }
