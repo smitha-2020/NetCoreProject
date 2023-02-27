@@ -1,21 +1,36 @@
-# DELETE https://localhost:7210/courses/abc HTTP/1.1
-#GET https://localhost:7210/courses HTTP/1.1
-# POST https://localhost:7210/courses HTTP/1.1
+ DELETE https://localhost:7210/fakecurds/2 HTTP/1.1
+# GET https://localhost:7210/fakecurds HTTP/1.1
+# POST https://localhost:7210/fakecurds HTTP/1.1
 # content-type: application/json
 
 # {
-#     "Name": "ML-13",
-#     "Status": 2,
-#     "StartDate": "2023-02-02"
+#     "Title": "New Product123",
+#     "Cost": 100,
+#     "Description": "New product123",
+#     "Images": "https://source.unsplash.com/164_6wVEHfI",
+#     "CategoryID":1
 # }
 
-# PUT https://localhost:7210/courses/1 HTTP/1.1
+# POST https://localhost:7210/fakecurds HTTP/1.1
 # content-type: application/json
 
 # {
-#     "Name": "FS-13 Microsoft",
-#     "Status": 1,
-#     "StartDate": "2023-11-23"
+#     "Title": "New Product345",
+#     "Cost": 200,
+#     "Description": "New product345",
+#     "Images": "https://source.unsplash.com/164_6wVEHfI",
+#     "CategoryID":1
+# }
+
+# PUT https://localhost:7210/fakecurds/1 HTTP/1.1
+# content-type: application/json
+
+# {
+#      "Title": "New Product1",
+#      "Cost": 120,
+#      "Description": "New product1",
+#      "Images": "https://source.unsplash.com/164_6wVEHfI",
+#      "CategoryID":1
 # }
 
 

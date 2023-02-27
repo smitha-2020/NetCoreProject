@@ -1,61 +1,49 @@
-using project.DTOs;
-using project.Models;
 using System.Collections.Concurrent;
+using DTOs;
+using Models;
+using project.services;
+using Services.Interface;
 
-namespace project.services.Impl;
-
-public class FakeCURDService<TModel, TDto> : ICURDServiceCOPY<TModel, TDto> 
-where TModel : BaseModel, new() 
-where TDto:BaseDTO<TModel>
+public class FakeCURDService : BaseEntity, ICURDService
 {
-  private ConcurrentDictionary<int, TModel> _items = new();
-  private int _itemId;
-  public TModel? Create(TDto request)
+  private ConcurrentDictionary<int, Product> _items = new();
+  private int _id;
+
+  public Product Create(DTOProduct newData)
   {
-    var item = new TModel
+    var item = new Product
     {
-      Id = Interlocked.Increment(ref _itemId),
+      Id = Interlocked.Increment(ref _id)
     };
-    request.UpdateModel(item);
+    newData.UpdateModel(item);
     _items[item.Id] = item;
     return item;
   }
 
   public bool Delete(int id)
   {
-    if (!_items.ContainsKey(id))
+    if (_items.ContainsKey(id) && _items.TryRemove(id, out Product? value))
     {
-      return false;
+      return true;
     }
-    _items.TryRemove(id, out var result);
-    return true;
+    return false;
   }
 
-  public TModel? Get(int id)
+  public Product Get(int id)
   {
-    if (_items.TryGetValue(id, out var result))
-    {
-      return result;
-    }
-    return null;
+    return _items[id];
   }
 
-  public ICollection<TModel> GetAll()
+  public ICollection<Product> GetAll()
   {
     return _items.Values;
   }
 
-  public TModel? Update(int id, TDto request)
+  public Product Update(int id, DTOProduct updateData)
   {
-
-    var item = Get(id);
-    if (item is null)
-    {
-      return null;
-    }
-    item.updatedAt = DateTime.Now;
-    request.UpdateModel(item);
-    _items[item.Id] = item;
-    return item;
+    var dataToUpdate = Get(id);
+    updateData.UpdateModel(dataToUpdate);
+    dataToUpdate.updatedAt = DateTime.Now;
+    return dataToUpdate;
   }
 }

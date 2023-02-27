@@ -4,6 +4,7 @@ using project.services.Impl;
 using System.Text.Json.Serialization;
 using project.Models;
 using project.DTOs;
+using Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IChatGPTService,ChatGptService>();
 builder.Services.AddSingleton<ICounterService,RequestCounterService>();
 //builder.Services.AddSingleton<ICURDService<Course,CourseDTO>,FakeCURDService<Course,CourseDTO>>();
 // builder.Services.AddSingleton<IStudentService,FakeStudentService>();
+builder.Services.AddSingleton<ICURDService,FakeCURDService>();
 
 
 var app = builder.Build();
