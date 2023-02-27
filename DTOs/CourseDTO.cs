@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using project.Models;
 using project.CustomValidationAttribute;
 
-public class CourseDTO :BaseDTO<Course>, IValidatableObject
+public class CourseDTO : BaseDTO<Course>, IValidatableObject
 {
   [MinLength(5, ErrorMessage = "Name should be atleast 5 charecters long.")]
   public string Name { get; set; }
@@ -23,11 +23,13 @@ public class CourseDTO :BaseDTO<Course>, IValidatableObject
     model.Status = Status;
   }
 
+  public int Size { get; set; }
+
   public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
   {
     if (StartDate < DateTime.Now && Status == Course.CourseStatus.NotStarted)
     {
-      yield return new ValidationResult("Status or StartDate is not Appropriate",new string[]{nameof(StartDate),nameof(Status)});
+      yield return new ValidationResult("Status or StartDate is not Appropriate", new string[] { nameof(StartDate), nameof(Status) });
     }
   }
 }
