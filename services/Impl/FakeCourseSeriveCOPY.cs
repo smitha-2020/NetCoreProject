@@ -46,6 +46,11 @@ public class FakeCourseSeriveCOPY : ICourseService
     return _courseDict.Values;
   }
 
+  public ICollection<Course> GetCourseByStatus(Course.CourseStatus status)
+  {
+    return _courseDict.Values.Where(item => item.Status == status).ToList();
+  }
+
   public Course? Update(int id, CourseDTO request)
   {
     var course = Get(id);

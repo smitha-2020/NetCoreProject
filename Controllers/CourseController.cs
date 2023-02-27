@@ -6,60 +6,63 @@ using project.services;
 using project.Models;
 using project.DTOs;
 
-public class CourseController : ApiController
+public class CourseController : FakeController<Course, CourseDTO>
 {
-  private readonly ILogger<CourseController> _logger;
-  private readonly ICURDServiceCOPY<Course,CourseDTO> _service;
-  public CourseController(ILogger<CourseController> logger, ICURDServiceCOPY<Course,CourseDTO> service)
+  private readonly ICourseService _service;
+  //private readonly ICURDServiceCOPY<Course, CourseDTO> _service;
+  public CourseController(ICourseService service) : base(service)
   {
-    _logger = logger ?? throw new ArgumentException(nameof(logger));
-    _service = service ?? throw new ArgumentException(nameof(logger));
+    _service = service;
   }
 
-  [HttpPost]
-  public IActionResult Create(CourseDTO course)
+  [HttpGet("ongoing")]
+  public ActionResult<ICollection<Course>> GetOngoingCouses()
   {
-    _logger.LogInformation("Creating new Courses..");
-    _service.Create(course);
-    return Ok();
+    return Ok(_service.GetCourseByStatus(Course.CourseStatus.OnGoing));
   }
 
-  [HttpGet("{id}")]
-  public ActionResult<Course?> Get(int id)
-  {
-    if (_service.Get(id) is null)
-    {
-      return NotFound("Course is not found");
-    }
-    return _service.Get(id);
-  }
+  // [HttpGet("{status}")]
+  // public ActionResult<ICollection<Course>> GetCoursesByStatus([FromQuery]Course.CourseStatus status)
+  // {
+  //   return Ok(_service.GetCourseByStatus(status));
+  // }
 
-  [HttpPut("{id}")]
-  public ActionResult Update(int id, CourseDTO course)
-  {
-    _logger.LogInformation("Update Action");
-    var c = _service.Update(id, course);
-    if (c is null)
-    {
-      return NotFound("Course is not found");
-    }
-    return Ok(c);
-  }
+  // [HttpGet("{id}")]
+  // public ActionResult<Course?> Get(int id)
+  // {
+  //   if (_service.Get(id) is null)
+  //   {
+  //     return NotFound("Course is not found");
+  //   }
+  //   return _service.Get(id);
+  // }
 
-  [HttpDelete("{id:int}")]
-  public ActionResult Delete(int id)
-  {
-    if (_service.Delete(id))
-    {
-      return Ok("Course Deleted successfully");
-    }
-    return NotFound("Course could not be deleted");
-  }
+  // [HttpPut("{id}")]
+  // public ActionResult Update(int id, CourseDTO course)
+  // {
+  //   _logger.LogInformation("Update Action");
+  //   var c = _service.Update(id, course);
+  //   if (c is null)
+  //   {
+  //     return NotFound("Course is not found");
+  //   }
+  //   return Ok(c);
+  // }
 
-  [HttpGet]
-  public ICollection<Course> GetAll()
-  {
-    return _service.GetAll();
-  }
+  // [HttpDelete("{id:int}")]
+  // public ActionResult Delete(int id)
+  // {
+  //   if (_service.Delete(id))
+  //   {
+  //     return Ok("Course Deleted successfully");
+  //   }
+  //   return NotFound("Course could not be deleted");
+  // }
+
+  // [HttpGet]
+  // public ICollection<Course> GetAll()
+  // {
+  //   return _service.GetAll();
+  // }
 
 }

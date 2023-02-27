@@ -1,5 +1,5 @@
- DELETE https://localhost:7210/fakecurds/2 HTTP/1.1
-# GET https://localhost:7210/fakecurds HTTP/1.1
+#DELETE https://localhost:7210/fakecurds/2 HTTP/1.1
+ GET https://localhost:7210/courses HTTP/1.1
 # POST https://localhost:7210/fakecurds HTTP/1.1
 # content-type: application/json
 

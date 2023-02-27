@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 
 namespace project.services.Impl;
 
-public class FakeCURDService<TModel, TDto> : ICURDServiceCOPY<TModel, TDto> 
+public class FakeCURDServiceOld<TModel, TDto> : ICURDServiceCOPY<TModel, TDto> 
 where TModel : BaseModel, new() 
 where TDto:BaseDTO<TModel>
 {
