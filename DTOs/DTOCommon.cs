@@ -1,4 +1,4 @@
-namespace DTOs;
+namespace project.DTOs;
 
 using Models;
 

@@ -1,6 +1,6 @@
-namespace Models;
+namespace project.Models;
 
-public class Product : BaseEntity
+public class Product : BaseModel
 {
     public string? Title { get; set; }
     public double Cost { get; set; }    

@@ -2,8 +2,8 @@ namespace project.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Services.Interface;
-using global::DTOs;
-using global::Models;
+using  project.DTOs;
+using  project.Models;
 
 public class FakeCURDController : ApiController
 {

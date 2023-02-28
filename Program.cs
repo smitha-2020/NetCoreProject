@@ -4,7 +4,7 @@ using project.services.Impl;
 using System.Text.Json.Serialization;
 using project.Models;
 using project.DTOs;
-using Services.Interface;
+using project.Services.Interface;
 using project.DB;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,9 +29,11 @@ builder.Services.AddScoped<IChatGPTService, ChatGptService>();
 builder.Services.AddSingleton<ICounterService, RequestCounterService>();
 //builder.Services.AddSingleton<ICURDService<Course,CourseDTO>,FakeCURDService<Course,CourseDTO>>();
 // builder.Services.AddSingleton<IStudentService,FakeStudentService>();
-builder.Services.AddSingleton<ICURDService, FakeCURDService>();
+//builder.Services.AddSingleton<ICURDServiceCOPY<Product,DTOProduct>, FakeCURDServiceOld<Product,DTOProduct>>();
+builder.Services.AddSingleton<IProductService,FakeProductService>();
 builder.Services.AddSingleton<ICURDServiceCOPY<Student, StudentDTO>, FakeCURDServiceOld<Student, StudentDTO>>();
-builder.Services.AddSingleton<ICourseService, FakeCourseSeriveCOPY>();
+builder.Services.AddScoped<ICourseService, DbCourseSerive>();
+//builder.Services.AddSingleton<ICourseService, FakeCourseSeriveCOPY>();
 
 
 var app = builder.Build();

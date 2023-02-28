@@ -4,5 +4,5 @@ using project.DTOs;
 
 public interface ICourseService : ICURDServiceCOPY<Course, CourseDTO>
 {
-  ICollection<Course> GetCourseByStatus(Course.CourseStatus status);
+  Task<ICollection<Course>> GetCourseByStatus(Course.CourseStatus status);
 }

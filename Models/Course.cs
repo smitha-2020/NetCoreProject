@@ -1,12 +1,16 @@
 namespace project.Models;
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class Course : BaseModel
 {
-  public string Name { get; set; }
+  public string Name { get; set; } = null!;
   public DateTime StartDate { get; set; }
   //public DateTime EndDate { get; set; }
   public CourseStatus Status { get; set; }
-  public int Size {get; set;}
+  //using data annotattion
+  [Column("size", TypeName = "smallint")]
+  public int Size { get; set; }
 
   public enum CourseStatus
   {

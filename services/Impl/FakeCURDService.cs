@@ -1,8 +1,8 @@
 using System.Collections.Concurrent;
-using DTOs;
-using Models;
+using project.DTOs;
+using project.Models;
 using project.services;
-using Services.Interface;
+using project.Services.Interface;
 
 public class FakeCURDService : BaseEntity, ICURDService
 {

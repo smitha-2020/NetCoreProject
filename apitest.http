@@ -1,28 +1,29 @@
-#DELETE https://localhost:7210/fakecurds/2 HTTP/1.1
- GET https://localhost:7210/courses HTTP/1.1
-# POST https://localhost:7210/fakecurds HTTP/1.1
-# content-type: application/json
-
-# {
-#     "Title": "New Product123",
-#     "Cost": 100,
-#     "Description": "New product123",
-#     "Images": "https://source.unsplash.com/164_6wVEHfI",
-#     "CategoryID":1
-# }
-
-# POST https://localhost:7210/fakecurds HTTP/1.1
+# DELETE https://localhost:7210/products/2 HTTP/1.1
+#  GET https://localhost:7210/fakeproducts HTTP/1.1
+#  GET https://localhost:7210/fakeproducts/byorder HTTP/1.1
+# POST https://localhost:7210/fakeproducts HTTP/1.1
 # content-type: application/json
 
 # {
 #     "Title": "New Product345",
-#     "Cost": 200,
+#     "Cost": 100,
 #     "Description": "New product345",
 #     "Images": "https://source.unsplash.com/164_6wVEHfI",
 #     "CategoryID":1
 # }
 
-# PUT https://localhost:7210/fakecurds/1 HTTP/1.1
+# POST https://localhost:7210/fakeproducts HTTP/1.1
+# content-type: application/json
+
+# {
+#     "Title": "New Product123",
+#     "Cost": 200,
+#     "Description": "New product123",
+#     "Images": "https://source.unsplash.com/164_6wVEHfI",
+#     "CategoryID":1
+# }
+
+# PUT https://localhost:7210/fakeproducts/1 HTTP/1.1
 # content-type: application/json
 
 # {
@@ -54,3 +55,29 @@
 #     "LastName":"Bhandarkar",
 #     "Email":"smitha@integrify.io"
 # }
+
+#  GET https://localhost:7210/courses HTTP/1.1
+#  GET https://localhost:7210/courses/ongoing?ongoing=NotStarted HTTP/1.1
+
+# POST https://localhost:7210/courses HTTP/1.1
+# content-type: application/json
+
+# {
+#     "Name": "FIN FS15-MS Focus",
+#     "StartDate": "2023-03-01",
+#     "Status": "NotStarted",
+#     "Size": 30
+# }
+
+# POST https://localhost:7210/courses HTTP/1.1
+# content-type: application/json
+
+# {
+#     "Name": "FIN FS16-Java",
+#     "StartDate": "2023-08-01",
+#     "Status": "NotStarted",
+#     "Size": 30
+# }
+
+
+ 

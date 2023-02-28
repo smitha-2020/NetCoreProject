@@ -1,9 +1,9 @@
-namespace DTOs;
+namespace project.DTOs;
 
 using System.ComponentModel.DataAnnotations;
-using Models;
+using project.Models;
 
-public class DTOProduct : DTOCommon
+public class DTOProduct : BaseDTO<Product>
 {
 
   public string? Title { get; set; }

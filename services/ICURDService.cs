@@ -1,6 +1,6 @@
-namespace Services.Interface;
-using Models;
-using DTOs;
+namespace project.Services.Interface;
+using project.Models;
+using project.DTOs;
 
 public interface ICURDService
 {

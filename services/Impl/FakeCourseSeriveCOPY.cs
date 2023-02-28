@@ -8,7 +8,7 @@ public class FakeCourseSeriveCOPY : ICourseService
 {
   private ConcurrentDictionary<int, Course> _courseDict = new();
   private int _courseId;
-  public Course? Create(CourseDTO request)
+  public async Task<Course?> Create(CourseDTO request)
   {
     var course = new Course
     {
@@ -22,7 +22,7 @@ public class FakeCourseSeriveCOPY : ICourseService
     return course;
   }
 
-  public bool Delete(int id)
+  public async Task<bool> Delete(int id)
   {
     if (!_courseDict.ContainsKey(id))
     {
@@ -32,7 +32,7 @@ public class FakeCourseSeriveCOPY : ICourseService
     return true;
   }
 
-  public Course? Get(int id)
+  public async Task<Course?> Get(int id)
   {
     if (_courseDict.TryGetValue(id, out var result))
     {
@@ -41,19 +41,19 @@ public class FakeCourseSeriveCOPY : ICourseService
     return null;
   }
 
-  public ICollection<Course> GetAll()
+  public async Task<ICollection<Course>> GetAll()
   {
     return _courseDict.Values;
   }
 
-  public ICollection<Course> GetCourseByStatus(Course.CourseStatus status)
+  public async Task<ICollection<Course>> GetCourseByStatus(Course.CourseStatus status)
   {
     return _courseDict.Values.Where(item => item.Status == status).ToList();
   }
 
-  public Course? Update(int id, CourseDTO request)
+  public async Task<Course?> Update(int id, CourseDTO request)
   {
-    var course = Get(id);
+    var course = await Get(id);
     if (course is null)
     {
       return null;

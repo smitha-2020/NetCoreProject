@@ -16,9 +16,9 @@ public class CourseController : FakeController<Course, CourseDTO>
   }
 
   [HttpGet("ongoing")]
-  public ActionResult<ICollection<Course>> GetOngoingCouses()
+  public async Task<ActionResult<ICollection<Course>>> GetOngoingCouses([FromQuery] Course.CourseStatus status)
   {
-    return Ok(_service.GetCourseByStatus(Course.CourseStatus.OnGoing));
+    return Ok(await _service.GetCourseByStatus(status));
   }
 
   // [HttpGet("{status}")]
