@@ -79,5 +79,7 @@
 #     "Size": 30
 # }
 
+ #DELETE https://localhost:7210/courses/1 HTTP/1.1
+
 
  

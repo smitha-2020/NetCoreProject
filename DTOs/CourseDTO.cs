@@ -3,6 +3,7 @@ namespace project.DTOs;
 using System.ComponentModel.DataAnnotations;
 using project.Models;
 using project.CustomValidationAttribute;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class CourseDTO : BaseDTO<Course>, IValidatableObject
 {
@@ -23,6 +24,8 @@ public class CourseDTO : BaseDTO<Course>, IValidatableObject
     model.Status = Status;
   }
 
+  //Attribute
+  [Column("course_size",TypeName="smallint")]
   public int Size { get; set; }
 
   public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
