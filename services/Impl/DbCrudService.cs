@@ -44,7 +44,7 @@ where TDto : BaseDTO<TModel>
 
   public virtual async Task<ICollection<TModel>> GetAll()
   {
-    return _dbContext.Set<TModel>().ToList();
+    return await Task.Run(()=>_dbContext.Set<TModel>().ToList());
   }
 
   public async Task<TModel?> Update(int id, TDto request)

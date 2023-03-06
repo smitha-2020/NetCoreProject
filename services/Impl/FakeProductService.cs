@@ -10,6 +10,6 @@ public class FakeProductService : FakeCURDServiceOld<Product, DTOProduct>, IProd
 {
   public async Task<ICollection<Product>> GetAllProductsByCostAsc()
   {
-    return _items.Values.OrderBy(item => item.Title).ToList();
+    return await Task.Run(()=>_items.Values.OrderBy(item => item.Title).ToList());
   }
 }

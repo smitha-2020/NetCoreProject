@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class CourseDTO : BaseDTO<Course>, IValidatableObject
 {
   [MinLength(5, ErrorMessage = "Name should be atleast 5 charecters long.")]
-  public string Name { get; set; }
+  public string Name { get; set; } = null!;
 
   [CourseStartDate]
   public DateTime StartDate { get; set; }

@@ -19,7 +19,7 @@ public class FakeCourseSeriveCOPY : ICourseService
     };
 
     _courseDict[course.Id] = course;
-    return course;
+    return await Task.Run(()=> course);
   }
 
   public async Task<bool> Delete(int id)
@@ -29,26 +29,26 @@ public class FakeCourseSeriveCOPY : ICourseService
       return false;
     }
     _courseDict.TryRemove(id, out var result);
-    return true;
+    return await Task.Run(()=> true);
   }
 
   public async Task<Course?> Get(int id)
   {
     if (_courseDict.TryGetValue(id, out var result))
     {
-      return result;
+      return await Task.Run(()=> result);
     }
     return null;
   }
 
   public async Task<ICollection<Course>> GetAll()
   {
-    return _courseDict.Values;
+    return await Task.Run(()=> _courseDict.Values);
   }
 
   public async Task<ICollection<Course>> GetCourseByStatus(Course.CourseStatus status)
   {
-    return _courseDict.Values.Where(item => item.Status == status).ToList();
+    return await Task.Run(() => _courseDict.Values.Where(item => item.Status == status).ToList());
   }
 
   public async Task<Course?> Update(int id, CourseDTO request)
@@ -61,6 +61,6 @@ public class FakeCourseSeriveCOPY : ICourseService
     course.Name = request.Name;
     course.Status = request.Status;
     course.StartDate = request.StartDate;
-    return course;
+    return await Task.Run(()=> course);
   }
 }

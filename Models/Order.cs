@@ -3,7 +3,7 @@ namespace project.Models;
 public class Order
 {
   public int CustomerId { get; set; }
-  public ICollection<OrderItem> Items { get; set; }
+  public ICollection<OrderItem> Items { get; set; } = null!;
 }
 
 public class OrderItem
