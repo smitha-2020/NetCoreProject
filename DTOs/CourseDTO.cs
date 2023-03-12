@@ -23,7 +23,7 @@ public class CourseDTO : BaseDTO<Course>, IValidatableObject
     model.StartDate = StartDate;
     model.Status = Status;
   }
-
+  
   //Attribute
   [Column("course_size",TypeName="smallint")]
   public int Size { get; set; }

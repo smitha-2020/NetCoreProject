@@ -2,28 +2,31 @@ namespace project.DTOs;
 
 using System.ComponentModel.DataAnnotations;
 using project.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 
 public class DTOProduct : BaseDTO<Product>
 {
-    [MaxLength(20, ErrorMessage = "maximum {1} characters allowed")]
-    public string? Title { get; set; }
+    [StringLength(50, MinimumLength = 9)]
+    public string Title { get; set; } = null!;
 
-    public double Cost { get; set; }
+    [Range(1, 100000, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+    public double Price { get; set; }
 
     [MinLength(10, ErrorMessage = "minimum {1} characters should be provided")]
-    public string? Description { get; set; }
+    public string Description { get; set; } = null!;
 
     public ICollection<string> Images { get; set; } = null!;
 
-    //public int CategoryID { get; set; }
+    public int CategoryId { get; set; }
+
+    public int Category { get; set; }
 
     public override void UpdateModel(Product p)
     {
         p.Images = Images;
-        p.Cost = Cost;
+        p.Price = Price;
         p.Description = Description;
         p.Title = Title;
-        //p.CategoryID = CategoryID;
+        p.CategoryId = CategoryId;
     }
 }
+
